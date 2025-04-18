@@ -1,0 +1,180 @@
+{
+    "info": {
+      "name": "Bike Service API",
+      "_postman_id": "5cbb4b98-8cf7-4e61-b17b-9d6b45d9e5ab",
+      "description": "Postman Collection for Bike Servicing Management System",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Customers",
+        "item": [
+          {
+            "name": "Get All Customers",
+            "request": {
+              "method": "GET",
+              "url": "{{base_url}}/api/customers"
+            }
+          },
+          {
+            "name": "Get Customer by ID",
+            "request": {
+              "method": "GET",
+              "url": "{{base_url}}/api/customers/:id"
+            }
+          },
+          {
+            "name": "Create Customer",
+            "request": {
+              "method": "POST",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "url": "{{base_url}}/api/customers",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"Nur Alam\",\n  \"email\": \"nur@example.com\",\n  \"phone\": \"01700000000\"\n}"
+              }
+            }
+          },
+          {
+            "name": "Update Customer",
+            "request": {
+              "method": "PUT",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "url": "{{base_url}}/api/customers/:id",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"Updated Name\"\n}"
+              }
+            }
+          },         
+          {
+            "name": "Delete Customer",
+            "request": {
+              "method": "DELETE",
+              "url": "{{base_url}}/api/customers/:id"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Bikes",
+        "item": [
+          {
+            "name": "Get All Bikes",
+            "request": {
+              "method": "GET",
+              "url": "{{base_url}}/api/bikes"
+            }
+          },
+          {
+            "name": "Get Bike by ID",
+            "request": {
+              "method": "GET",
+              "url": "{{base_url}}/api/bikes/:id"
+            }
+          },
+          {
+            "name": "Create Bike",
+            "request": {
+              "method": "POST",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "url": "{{base_url}}/api/bikes",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"brand\": \"Honda\",\n  \"model\": \"CBR 150\",\n  \"year\": 2021,\n  \"customerId\": \"uuid-of-customer\"\n}"
+              }
+            }
+          },
+          {
+            "name": "Update Bike",
+            "request": {
+              "method": "PUT",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "url": "{{base_url}}/api/bikes/:id",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"brand\": \"Yamaha\"\n}"
+              }
+            }
+          },
+          {
+            "name": "Delete Bike",
+            "request": {
+              "method": "DELETE",
+              "url": "{{base_url}}/api/bikes/:id"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Services",
+        "item": [
+          {
+            "name": "Get All Services",
+            "request": {
+              "method": "GET",
+              "url": "{{base_url}}/api/services"
+            }
+          },
+          {
+            "name": "Get Service by ID",
+            "request": {
+              "method": "GET",
+              "url": "{{base_url}}/api/services/:id"
+            }
+          },
+          {
+            "name": "Create Service",
+            "request": {
+              "method": "POST",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "url": "{{base_url}}/api/services",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"bikeId\": \"uuid-of-bike\",\n  \"serviceDate\": \"2024-04-17T10:00:00.000Z\",\n  \"completionDate\": \"2024-04-18T15:00:00.000Z\",\n  \"description\": \"Engine check and oil change\",\n  \"status\": \"Completed\"\n}"
+              }
+            }
+          },
+          {
+            "name": "Update Service",
+            "request": {
+              "method": "PUT",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "url": "{{base_url}}/api/services/:id/complete"
+            }
+          },
+          {
+            "name": "Delete Service",
+            "request": {
+              "method": "DELETE",
+              "url": "{{base_url}}/api/services/:id"
+            }
+          },
+          {
+            "name": "Get Pending or Overdue Services",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/api/services/status",
+                "host": ["{{base_url}}"],
+                "path": ["api", "services", "status"]
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "variable": [
+      {
+        "key": "base_url",
+        "value": "http://localhost:3000"
+      }
+    ]
+  }
+  
